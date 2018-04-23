@@ -31,6 +31,14 @@
       "defaultValue": 2,
       "maxValue": 100
     },
+    "scriptURL": {
+        "defaultValue": "https://raw.githubusercontent.com/swiftsolves-msft/AzureIAC/master/scripts/DemoAppConfig.sh",
+        "type": "string"
+      },
+      "scriptCommand": {
+        "defaultValue": "sh DemoAppConfig.sh",
+        "type": "string"
+      },
     "adminUsername": {
       "type": "string",
       "metadata": {
@@ -135,6 +143,27 @@
                       }
                     }
                   ]
+                }
+              }
+            ]
+          },
+          "extensionProfile": {
+            "extensions": [
+              {
+                "name": "customScript",
+                "properties": {
+                  "publisher": "Microsoft.Compute",
+                  "settings": {
+                    "fileUris": [
+                        "[parameters('scriptURL')]"
+                    ]
+                  },
+                  "typeHandlerVersion": "1.8",
+                  "autoUpgradeMinorVersion": true,
+                  "protectedSettings": {
+                    "commandToExecute": "[parameters('scriptCommand')]"
+                  },
+                  "type": "CustomScriptExtension"
                 }
               }
             ]
