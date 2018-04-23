@@ -218,8 +218,8 @@
                 "id": "[concat(resourceId('Microsoft.Network/loadBalancers', variables('loadBalancerName')), '/backendAddressPools/', variables('loadBalancerBackendName'))]"
               },
               "protocol": "Tcp",
-              "frontendPort": 80,
-              "backendPort": 80,
+              "frontendPort": 3000,
+              "backendPort": 3000,
               "enableFloatingIP": false,
               "idleTimeoutInMinutes": 5,
               "probe": {
@@ -233,7 +233,7 @@
             "name": "[variables('loadBalancerProbeName')]",
             "properties": {
               "protocol": "Tcp",
-              "port": 80,
+              "port": 3000,
               "intervalInSeconds": 5,
               "numberOfProbes": 2
             }
